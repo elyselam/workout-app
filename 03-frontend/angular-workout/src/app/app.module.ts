@@ -7,13 +7,15 @@ import { RoutineComponent } from './common/routine/routine.component';
 import { ExercisesComponent } from './common/exercises/exercises.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ExerciseService} from "./services/exercise.service";
+import { ExerciseListComponent } from './components/exercise-list/exercise-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutineListComponent,
     RoutineComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    ExerciseListComponent
   ],
   imports: [
     BrowserModule,
