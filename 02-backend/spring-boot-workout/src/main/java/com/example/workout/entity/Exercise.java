@@ -16,7 +16,7 @@ public class Exercise {
 
     @ManyToOne
     @JoinColumn(name = "routine_id", nullable=false)
-    private String routine;
+    private Routine routine;
 
     @Column(name = "exercise_name")
     private String exercise_name;
