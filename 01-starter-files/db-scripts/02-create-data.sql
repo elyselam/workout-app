@@ -26,9 +26,9 @@ AUTO_INCREMENT = 1;
 -- routine_name: [push1, pull1, hybrid1, push2, pull2, hybrid2]
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `workoutapp`.`routine_table` (
-  `routine_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `routine_name` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`routine_id`))
+  PRIMARY KEY (`id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_table` (
    `reps_accomplished` BOOLEAN,
     PRIMARY KEY (`exercise_id`),
   KEY `fk_routine` (`routine_id`),
-  CONSTRAINT `fk_routine` FOREIGN KEY (`routine_id`) REFERENCES `routine_table`(`routine_id`)
+  CONSTRAINT `fk_routine` FOREIGN KEY (`routine_id`) REFERENCES `routine_table`(`id`)
 ) 
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
@@ -60,14 +60,19 @@ AUTO_INCREMENT = 1;
 
 INSERT INTO user_table(user_name) VALUES ('elyse');
 
+
+
 INSERT INTO routine_table (routine_name) VALUES ('push1');
 
 INSERT INTO routine_table (routine_name) VALUES ('pull1');
 
+
+
+
+
 INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'benchpress', 0, 0, 0, 0, False);
 
 INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'squats', 0, 0, 0, 0, False);
-
 
 INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'pullups', 0, 0, 0, 0, False);
 
