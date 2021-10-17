@@ -22,6 +22,9 @@ public class Exercise {
     @Column(name = "exercise_name")
     private String exerciseName;
 
+    @Column(name = "starting_weight")
+    private Integer startingWeight;
+
     @Column(name = "set_1")
     private Integer set1;
 

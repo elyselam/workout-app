@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_table` (
   `exercise_id` INT(11) NOT NULL AUTO_INCREMENT,
   `routine_id` INT(11) NOT NULL,
   `exercise_name` VARCHAR(255) DEFAULT NULL,
+  `starting_weight` INT(11) NOT NULL,
   `set_1` INT(11) DEFAULT NULL,
   `set_2` INT(11) DEFAULT NULL,
   `set_3` INT(11) DEFAULT NULL,
@@ -70,13 +71,13 @@ INSERT INTO routine_table (routine_name) VALUES ('pull1');
 
 
 
-INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'benchpress', 0, 0, 0, 0, False);
+INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'benchpress', 0, 0, 0, 0, 0, False);
 
-INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'squats', 0, 0, 0, 0, False);
+INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'squats', 0, 0, 0, 0, 0, False);
 
-INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'pullups', 0, 0, 0, 0, False);
+INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'pullups', 0, 0, 0, 0, 0, False);
 
-INSERT INTO exercise_table (routine_id, exercise_name, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'deadlift', 0, 0, 0, 0, False);
+INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'deadlift', 0, 0, 0, 0, 0, False);
 
 
 
