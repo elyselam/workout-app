@@ -2,7 +2,7 @@ package com.example.workout.entity;
 import lombok.Data;
 import javax.persistence.*;
 
-
+// maybe use SSO through fb, google, others? much simpler than this... 
 @Entity
 @Table(name = "user_table")
 
