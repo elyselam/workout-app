@@ -1,5 +1,7 @@
 package com.example.workout.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +24,7 @@ public class Routine {
     private String routineName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "routine")
+    @JsonManagedReference
     private List<ExerciseDay> exerciseDayId;
 }
 

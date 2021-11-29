@@ -1,4 +1,5 @@
 package com.example.workout.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,8 +16,9 @@ public class Exercise {
     private Integer exerciseID;
 
     @ManyToOne
-    @JoinColumn(name = "routine_id", nullable=false)
-    private ExerciseDay routine;
+    @JoinColumn(name = "exercise_day_id", nullable=false)
+    @JsonIgnore
+    private ExerciseDay exerciseDay;
 
     @Column(name = "exercise_name")
     private String exerciseName;
