@@ -1,12 +1,11 @@
 package com.example.workout.entity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import javax.persistence.*;
 
 
 @Entity
-@Table(name = "exercise_table")
+@Table(name = "exercise")
 @Data
 public class Exercise {
 
@@ -17,13 +16,16 @@ public class Exercise {
 
     @ManyToOne
     @JoinColumn(name = "routine_id", nullable=false)
-    private Routine routine;
+    private ExerciseDay routine;
 
     @Column(name = "exercise_name")
     private String exerciseName;
 
     @Column(name = "starting_weight")
     private Integer startingWeight;
+
+    @Column(name = "inc_weight_by")
+    private Integer incWeightBy;
 
     @Column(name = "set_1")
     private Integer set1;
