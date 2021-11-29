@@ -22,7 +22,9 @@ public class ExerciseDay {
     private String exerciseDayName;
 
     @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "routine_id", nullable=false)
     private Routine routineID;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseID")
     private List<Exercise> exerciseID;
