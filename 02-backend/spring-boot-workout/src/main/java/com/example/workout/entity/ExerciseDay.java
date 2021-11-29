@@ -1,4 +1,7 @@
 package com.example.workout.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +24,10 @@ public class ExerciseDay {
     @Column(name = "exercise_day_name")
     private String exerciseDayName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "routine_id", nullable=false)
-    private Routine routineID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "routine_id", nullable=false, insertable=false, updatable=false)
+    @JsonIgnore
+    private Routine routine;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseID")
