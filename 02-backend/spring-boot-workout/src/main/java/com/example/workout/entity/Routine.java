@@ -21,8 +21,8 @@ public class Routine {
     @Column(name = "routine_name")
     private String routineName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseDayId")
-    private List<ExerciseDay> exerciseDay;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "routine")
+    private List<ExerciseDay> exerciseDayId;
 }
 
 
