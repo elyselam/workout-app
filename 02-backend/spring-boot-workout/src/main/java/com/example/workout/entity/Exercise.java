@@ -17,7 +17,7 @@ public class Exercise {
 
     @ManyToOne
     @JoinColumn(name = "exercise_day_id", nullable=false)
-    @JsonIgnore
+    @JsonIgnore //need this to prevent infinite loops
     private ExerciseDay exerciseDay;
 
     @Column(name = "exercise_name")
