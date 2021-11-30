@@ -2,8 +2,8 @@ package com.example.workout.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,10 +11,32 @@ import java.util.List;
 
 @Entity
 @Table(name = "routine")
-@Getter
-@Setter
 
 public class Routine {
+    public Integer getRoutineId() {
+        return routineId;
+    }
+
+    public void setRoutineId(Integer routineId) {
+        this.routineId = routineId;
+    }
+
+    public String getRoutineName() {
+        return routineName;
+    }
+
+    public void setRoutineName(String routineName) {
+        this.routineName = routineName;
+    }
+
+    public List<ExerciseDay> getExerciseDayId() {
+        return exerciseDayList;
+    }
+
+    public void setExerciseDayList(List<ExerciseDay> exerciseDayList) {
+        this.exerciseDayList= exerciseDayList;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "routine_id")
@@ -23,9 +45,12 @@ public class Routine {
     @Column(name = "routine_name")
     private String routineName;
 
+    public Routine() {
+    }
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "routine")
-    @JsonManagedReference
-    private List<ExerciseDay> exerciseDayId;
+
+    private List<ExerciseDay> exerciseDayList;
 }
 
 
