@@ -29,7 +29,7 @@ public class Routine {
         this.routineName = routineName;
     }
 
-    public List<ExerciseDay> getExerciseDayId() {
+    public List<ExerciseDay> getExerciseDayList() {
         return exerciseDayList;
     }
 
