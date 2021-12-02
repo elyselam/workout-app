@@ -28,7 +28,7 @@ public class RoutineController {
     }
 
     @PutMapping(consumes = "application/json")
-    private HttpStatus updateRoutine(Routine routine) {
+    private HttpStatus updateRoutine(@RequestBody Routine routine) {
         return routineService.updateRoutine(routine);
     }
 
