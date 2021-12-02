@@ -18,10 +18,7 @@ public class RoutineController {
         return routineService.getRoutines();
     }
 
-    @GetMapping(path="/getOneRoutine")
-    private Routine getOneRoutine(Routine routine) {
-        return routineService.getOneRoutine(routine);
-    }
+
     @PostMapping(consumes = "application/json")
     public HttpStatus createRoutine(@RequestBody Routine routine){
         return routineService.createRoutine(routine);
@@ -32,9 +29,14 @@ public class RoutineController {
         return routineService.updateRoutine(routine);
     }
 
-    @DeleteMapping
-    private HttpStatus deleteRoutine(Routine routine) {
-        return routineService.deleteRoutine(routine);
+    @DeleteMapping(path="/{routineId}")
+    private HttpStatus deleteRoutine(@PathVariable("routineId") Integer routine) {
+        return routineService.deleteRoutineById(routine);
+    }
+
+    @GetMapping(path="/{routineId}")
+    private HttpStatus getOneRoutine(@PathVariable("routineId") Integer routineId) {
+        return routineService.getOneRoutine(routineId);
     }
 
 }
