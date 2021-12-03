@@ -3,30 +3,27 @@ package com.example.workout.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "exercise_day")
-
-
 public class ExerciseDay {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_day_id")
     private Integer exerciseDayId;
 
     @Column(name = "exercise_day_name")
     private String exerciseDayName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "routine_id", nullable=false, insertable=false, updatable=false)
     @JsonIgnore
     private Routine routine;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseDay")
     private List<Exercise> exerciseList;
 
     public ExerciseDay() {
