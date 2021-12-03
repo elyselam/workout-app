@@ -49,7 +49,6 @@ public class Routine {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "routine")
-
     private List<ExerciseDay> exerciseDayList;
 }
 
