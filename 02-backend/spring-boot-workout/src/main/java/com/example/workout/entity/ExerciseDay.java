@@ -1,6 +1,7 @@
 package com.example.workout.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class ExerciseDay {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "exerciseDay")
+    @JsonManagedReference
     private List<Exercise> exerciseList;
 
     public ExerciseDay() {
