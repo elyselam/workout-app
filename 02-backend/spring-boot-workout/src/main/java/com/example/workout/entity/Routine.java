@@ -47,7 +47,7 @@ public class Routine {
 
     public Routine() {
     }
-
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "routine")
     private List<ExerciseDay> exerciseDayList;
 }
