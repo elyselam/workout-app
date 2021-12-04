@@ -1,4 +1,5 @@
 package com.example.workout.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -14,13 +15,13 @@ public class Exercise {
     @Column(name = "exercise_id")
     private Integer exerciseID;
 
-    @ManyToOne
-    @JoinColumn(name = "exercise_day_id", insertable = false, updatable = false, nullable=false)
-    @JsonIgnore //need this to prevent infinite loops
-    private ExerciseDay exerciseDay;
-
     @Column(name = "exercise_name")
     private String exerciseName;
+
+    @ManyToOne
+    @JoinColumn(name = "exercise_day_id")
+    @JsonBackReference
+    private ExerciseDay exerciseDay;
 
     @Column(name = "starting_weight")
     private Integer startingWeight;
@@ -45,6 +46,7 @@ public class Exercise {
 
     public Exercise() {
     }
+
 
     public Integer getExerciseID() {
         return exerciseID;
