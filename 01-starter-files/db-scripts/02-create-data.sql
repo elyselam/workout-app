@@ -8,11 +8,9 @@ USE `workoutapp` ;
 
 
 -- -----------------------------------------------------
--- Table `workout`.`user_table`
--- 1 user, 6 routines
--- user_id is the contraint on routines, can't delete user
+
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `workoutapp`.`user_table` (
+CREATE TABLE IF NOT EXISTS `workoutapp`.`user` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`))
@@ -21,39 +19,83 @@ AUTO_INCREMENT = 1;
 
 
 -- -----------------------------------------------------
--- Table `workout`.`routine_table`
--- 1 routine, 6 exercises (i'm gonna start with just 1 for now)
--- routine_name: [push1, pull1, hybrid1, push2, pull2, hybrid2]
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `workoutapp`.`routine_table` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS; 
+SET FOREIGN_KEY_CHECKS=0; 
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
+
+CREATE TABLE IF NOT EXISTS `workoutapp`.`routine` (
+  `routine_id` INT(11) NOT NULL AUTO_INCREMENT,
   `routine_name` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
+  `exercise_day_id` INT(11) NULL DEFAULT NULL,
+  -- KEY `fk_exercise_day` (`exercise_day_id`),
+  -- CONSTRAINT `fk_routine` FOREIGN KEY (`exercise_day_id`) REFERENCES `exercise_day`(`exercise_day_id`),
+  PRIMARY KEY(`routine_id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
--- -----------------------------------------------------
--- Table `workout`.`exercise_name_table`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_table` (
-  `exercise_id` INT(11) NOT NULL AUTO_INCREMENT,
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS; 
+SET FOREIGN_KEY_CHECKS=0; 
+
+
+CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_day` (
+  `exercise_day_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `exercise_day_name` VARCHAR(255) NULL DEFAULT NULL,
   `routine_id` INT(11) NOT NULL,
+  --    KEY `fk_routine2` (`routine_id`),
+  CONSTRAINT `fk_routine2` FOREIGN KEY (`routine_id`) REFERENCES `routine`(`routine_id`),
+  PRIMARY KEY(`exercise_day_id`))
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
+
+-------------------------
+
+-- CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_day` (
+--   `exercise_day_id` INT(11) NOT NULL AUTO_INCREMENT,
+--   `exercise_day_name` VARCHAR(255) NULL DEFAULT NULL,
+--   `exercise_id` INT(11) NOT NULL,
+-- `routine_id` INT(11) NOT NULL,
+--       KEY `fk_routine2` (`routine_id`),
+--   CONSTRAINT `fk_routine2` FOREIGN KEY (`routine_id`) REFERENCES `routine`(`routine_id`),
+--     KEY `fk_exercise2` (`exercise_id`),
+--   CONSTRAINT `fk_exercise2` FOREIGN KEY (`exercise_id`) REFERENCES `exercise`(`exercise_id`),
+--   PRIMARY KEY(`exercise_day_id`))
+-- ENGINE=InnoDB
+-- AUTO_INCREMENT = 1;
+
+
+
+
+
+
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise` (
+  `exercise_id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `exercise_name` VARCHAR(255) DEFAULT NULL,
   `starting_weight` INT(11) NOT NULL,
+  `inc_weight_by` INT(11) NOT NULL,
   `set_1` INT(11) DEFAULT NULL,
   `set_2` INT(11) DEFAULT NULL,
   `set_3` INT(11) DEFAULT NULL,
   `set_4` INT(11) DEFAULT NULL,
    `reps_accomplished` BOOLEAN,
-    PRIMARY KEY (`exercise_id`),
-  KEY `fk_routine` (`routine_id`),
-  CONSTRAINT `fk_routine` FOREIGN KEY (`routine_id`) REFERENCES `routine_table`(`id`)
+   `exercise_day_id` INT(11) NOT NULL,
+    -- PRIMARY KEY(`exercise_id`),
+  -- KEY `fk_exercise_day` (`exercise_day_id`),
+  CONSTRAINT `fk_exercise_day` FOREIGN KEY (`exercise_day_id`) REFERENCES `exercise_day`(`exercise_day_id`)
 ) 
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 
--- SHOW FULL COLUMNS FROM routine_table;
+
+-- SHOW FULL COLUMNS FROM routine;
 
 -- -----------------------------------------------------
 --insert
@@ -63,17 +105,26 @@ INSERT INTO user_table(user_name) VALUES ('elyse');
 
 
 
-INSERT INTO routine_table (routine_name) VALUES ('push1');
-
-INSERT INTO routine_table (routine_name) VALUES ('pull1');
+INSERT INTO routine(routine_name) VALUES ('whenNOTLAZY');
 
 
 
 
 
-INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'benchpress', 0, 0, 0, 0, 0, False);
+
+INSERT INTO exercise(exercise_name, starting_weight, inc_weight_by, set_1, set_2, set_3, set_4, reps_accomplished, exercise_day_id) VALUES ('benchpress', 90, 10, 0, 0, 0, 0, False, 1);
+
+INSERT INTO exercise_day (exercise_day_name, exercise_id, routine_id) VALUES ('pull1', 1, 1);
+
+
+
+
+
 
 INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (1,'squats', 0, 0, 0, 0, 0, False);
+
+
+
 
 INSERT INTO exercise_table (routine_id, exercise_name, starting_weight, set_1, set_2, set_3, set_4, reps_accomplished) VALUES (2,'pullups', 0, 0, 0, 0, 0, False);
 

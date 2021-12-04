@@ -1,6 +1,7 @@
 package com.example.workout.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,8 +19,8 @@ public class ExerciseDay {
     private String exerciseDayName;
 
     @ManyToOne
-    @JoinColumn(name = "routine_id", nullable=false, insertable=false, updatable=false)
-    @JsonIgnore
+    @JoinColumn(name = "routine_id")
+    @JsonBackReference
     private Routine routine;
 
 
