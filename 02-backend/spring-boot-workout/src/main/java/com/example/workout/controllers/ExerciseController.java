@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -27,9 +26,9 @@ public class ExerciseController {
         return exerciseService.createExercise(exercise);
 
     }
-    @PutMapping(consumes="application/json")
-    public HttpStatus updateExercise(@RequestBody Exercise exercise){
-        return exerciseService.updateExercise(exercise);
+    @PutMapping(consumes="application/json", path="/{exerciseId}")
+    public HttpStatus updateExercise(@RequestBody Exercise exercise, @PathVariable("exerciseId") Integer exerciseId){
+        return exerciseService.updateExercise(exercise, exerciseId);
     }
 
     @DeleteMapping(path="/{exerciseId}")
@@ -38,7 +37,7 @@ public class ExerciseController {
     }
 
     @GetMapping(path="/{exerciseId}")
-    public HttpStatus getOneExercise(@PathVariable("exerciseId") Integer exerciseId){
+    public Exercise getOneExercise(@PathVariable("exerciseId") Integer exerciseId){
         return exerciseService.getOneExercise(exerciseId);
     }
 
