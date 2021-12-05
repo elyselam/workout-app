@@ -1,6 +1,7 @@
 package com.example.workout.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "exercise_day")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ExerciseDay {
 
     @Id

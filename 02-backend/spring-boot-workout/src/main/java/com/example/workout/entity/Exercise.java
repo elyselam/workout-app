@@ -1,6 +1,7 @@
 package com.example.workout.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,12 +9,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "exercise")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_id")
-    private Integer exerciseID;
+    private Integer exerciseId;
 
     @Column(name = "exercise_name")
     private String exerciseName;
@@ -49,11 +51,11 @@ public class Exercise {
 
 
     public Integer getExerciseID() {
-        return exerciseID;
+        return exerciseId;
     }
 
     public void setExerciseID(Integer exerciseID) {
-        this.exerciseID = exerciseID;
+        this.exerciseId = exerciseID;
     }
 
     public ExerciseDay getExerciseDay() {

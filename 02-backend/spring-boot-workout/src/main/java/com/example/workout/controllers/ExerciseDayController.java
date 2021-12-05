@@ -2,6 +2,7 @@ package com.example.workout.controllers;
 
 
 import com.example.workout.Services.ExerciseDayService;
+import com.example.workout.entity.Exercise;
 import com.example.workout.entity.ExerciseDay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,9 @@ public class ExerciseDayController {
         return exerciseDayService.createExerciseDay(exerciseDay);
     }
 
-    @PutMapping(consumes="application/json")
-    private HttpStatus updateExerciseDay(@RequestBody ExerciseDay exerciseDay) {
-        return exerciseDayService.updateExerciseDay(exerciseDay);
+    @PutMapping(consumes="application/json", path="/{exerciseDayId}")
+    private HttpStatus updateExerciseDay(@RequestBody ExerciseDay exerciseDay, @PathVariable("exerciseDayId") Integer exerciseDayId) {
+        return exerciseDayService.updateExerciseDay(exerciseDay, exerciseDayId);
     }
 
     @DeleteMapping(path="/{exerciseDayId}")
@@ -36,7 +37,7 @@ public class ExerciseDayController {
     }
 
     @GetMapping(path="/{exerciseDayId}")
-    private HttpStatus getOneExerciseDay(@PathVariable("exerciseDayId") Integer exerciseDayId) {
+    private ExerciseDay getOneExerciseDay(@PathVariable("exerciseDayId") Integer exerciseDayId) {
         return exerciseDayService.getOneExerciseDay(exerciseDayId);
     }
 

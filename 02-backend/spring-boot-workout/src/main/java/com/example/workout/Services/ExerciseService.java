@@ -23,9 +23,9 @@ public class ExerciseService {
         return HttpStatus.ACCEPTED;
     }
 
-    public HttpStatus updateExercise(Exercise exercise) {
-        Exercise exercise1 = exerciseRepository.getById(exercise.getExerciseID());
-        exercise1.setExerciseID(exercise.getExerciseID());
+    public HttpStatus updateExercise(Exercise exercise, Integer exerciseId) {
+        Exercise exercise1 = exerciseRepository.getById(exerciseId);
+//        exercise1.setExerciseID(exercise.getExerciseID());
         exercise1.setExerciseName(exercise.getExerciseName());
         exercise1.setStartingWeight(exercise.getStartingWeight());
         exercise1.setIncWeightBy(exercise.getIncWeightBy());
@@ -43,9 +43,9 @@ public class ExerciseService {
         return HttpStatus.ACCEPTED;
     }
 
-    public HttpStatus getOneExercise(Integer exerciseId){
-        exerciseRepository.getById(exerciseId);
-        return HttpStatus.ACCEPTED;
+    public Exercise getOneExercise(Integer exerciseId){
+        return exerciseRepository.getById(exerciseId);
+
     }
 
 

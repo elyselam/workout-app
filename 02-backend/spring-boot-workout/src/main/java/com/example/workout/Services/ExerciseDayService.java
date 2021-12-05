@@ -23,9 +23,9 @@ public class ExerciseDayService {
         return HttpStatus.ACCEPTED;
     }
 
-    public HttpStatus updateExerciseDay(ExerciseDay exerciseDay) {
-        ExerciseDay newExerciseDay = exerciseDayRepository.getById(exerciseDay.getExerciseDayId());
-        newExerciseDay.setExerciseDayId(exerciseDay.getExerciseDayId());
+    public HttpStatus updateExerciseDay(ExerciseDay exerciseDay, Integer exerciseDayId) {
+        ExerciseDay newExerciseDay = exerciseDayRepository.getById(exerciseDayId);
+//        newExerciseDay.setExerciseDayId(exerciseDay.getExerciseDayId());
         newExerciseDay.setExerciseDayName(exerciseDay.getExerciseDayName());
         exerciseDayRepository.save(newExerciseDay);
         return HttpStatus.ACCEPTED;
@@ -36,9 +36,9 @@ public class ExerciseDayService {
         return HttpStatus.ACCEPTED;
     }
 
-    public HttpStatus getOneExerciseDay(Integer exerciseDayId){
-        exerciseDayRepository.getById(exerciseDayId);
-        return HttpStatus.ACCEPTED;
+    public ExerciseDay getOneExerciseDay(Integer exerciseDayId){
+        return exerciseDayRepository.getById(exerciseDayId);
+
     }
 
 
