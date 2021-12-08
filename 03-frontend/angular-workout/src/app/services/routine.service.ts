@@ -1,20 +1,28 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Exercises} from "../common/exercises";
-import {map} from "rxjs/operators";
+
 import {Routine} from "../common/routine";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoutineService {
-  private baseUrl = 'http://localhost:8080/api/routine-details'
+  private baseUrl = 'http://localhost:8080/api/routine'
   constructor(private httpClient: HttpClient) {
   }
-  getExerciseDetails(): Observable<Routine[]>{
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(map(response => response._embedded.exercise));
+  // getExerciseDetails(): Observable<Routine[]>{
+  //   return this.httpClient.get<GetResponse>(this.baseUrl).pipe(map(response => response._embedded.exercise));
+  // }
+
+  saveRoutine(routine: Routine): Promise<Routine> {
+    return this.httpClient.post(this.baseUrl, routine).toPromise().then((resp:Routine) => {
+      return resp;
+    });
+
   }
+
+
+
 }
 
 

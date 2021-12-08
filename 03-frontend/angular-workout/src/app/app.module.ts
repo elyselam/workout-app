@@ -6,19 +6,21 @@ import { RoutineListComponent } from './components/routine-list/routine-list.com
 
 import {HttpClientModule} from "@angular/common/http";
 import {ExerciseService} from "./services/exercise.service";
-import { ExerciseListComponent } from './components/exercise-details/exercise-list.component';
+
 import {RoutineService} from "./services/routine.service";
+import { AddRoutineComponent } from './components/add-routine/add-routine.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutineListComponent,
-
-    ExerciseListComponent
+   AddRoutineComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule
 
   ],
   providers: [ExerciseService, RoutineService],
