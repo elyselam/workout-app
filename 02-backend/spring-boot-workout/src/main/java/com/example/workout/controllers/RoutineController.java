@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path="api/routine")
 public class RoutineController {
@@ -20,12 +21,12 @@ public class RoutineController {
 
 
     @PostMapping(consumes = "application/json")
-    public HttpStatus createRoutine(@RequestBody Routine routine){
+    public Routine createRoutine(@RequestBody Routine routine){
         return routineService.createRoutine(routine);
     }
 
     @PutMapping(consumes = "application/json")
-    private HttpStatus updateRoutine(@RequestBody Routine routine) {
+    private Routine updateRoutine(@RequestBody Routine routine) {
         return routineService.updateRoutine(routine);
     }
 
@@ -35,7 +36,7 @@ public class RoutineController {
     }
 
     @GetMapping(path="/{routineId}")
-    private HttpStatus getOneRoutine(@PathVariable("routineId") Integer routineId) {
+    private Routine getOneRoutine(@PathVariable("routineId") Integer routineId) {
         return routineService.getOneRoutine(routineId);
     }
 

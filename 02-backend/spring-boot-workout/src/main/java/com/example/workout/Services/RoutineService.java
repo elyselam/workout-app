@@ -17,20 +17,16 @@ public class RoutineService {
         return routineRepository.findAll();
     }
 
-    public HttpStatus createRoutine(Routine routine) {
-
-        routineRepository.save(routine);
-        System.out.println(routine.getRoutineName());
-        return HttpStatus.ACCEPTED;
+    public Routine createRoutine(Routine routine) {
+        return routineRepository.save(routine);
     }
 
-    public HttpStatus updateRoutine(Routine routine) {
+    public Routine updateRoutine(Routine routine) {
         Routine newRoutine = routineRepository.getById(routine.getRoutineId());
         newRoutine.setRoutineId(routine.getRoutineId());
         newRoutine.setRoutineName(routine.getRoutineName());
         //newRoutine.setExerciseDayList(routine.getExerciseDayId());
-        routineRepository.save(newRoutine);
-        return HttpStatus.ACCEPTED;
+        return routineRepository.save(newRoutine);
     }
 
 
@@ -38,9 +34,8 @@ public class RoutineService {
         routineRepository.deleteById(routineId);
         return HttpStatus.ACCEPTED;
     }
-    public HttpStatus getOneRoutine(Integer routineId) {
-        routineRepository.getById(routineId);
-        return HttpStatus.ACCEPTED;
+    public Routine getOneRoutine(Integer routineId) {
+        return routineRepository.getById(routineId);
     }
 
 

@@ -1,6 +1,13 @@
-export class Routine {
-  push1: string;
-  pull1: string;
+import {ExerciseDay} from "./exercise-day";
 
+export class Routine {
+  routineId: number;
+  routineName: string;
+  exerciseDayList: ExerciseDay[];
+
+  constructor(routineName: string) {
+    this.routineName = routineName;
+  }
 }
-//just starting with 2 routines for now
+
+
