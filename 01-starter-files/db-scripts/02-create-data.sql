@@ -11,9 +11,9 @@ USE `workoutapp` ;
 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `workoutapp`.`user` (
-  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `user_name` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`))
+  `user_id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_name` VARCHAR(255) NULL DEFAULT NULL)
+ -- PRIMARY KEY (`user_id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
@@ -26,12 +26,12 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 
 
 CREATE TABLE IF NOT EXISTS `workoutapp`.`routine` (
-  `routine_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `routine_id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `routine_name` VARCHAR(255) NULL DEFAULT NULL,
-  `exercise_day_id` INT(11) NULL DEFAULT NULL,
+  `exercise_day_id` INT(11) NULL DEFAULT NULL)
   -- KEY `fk_exercise_day` (`exercise_day_id`),
   -- CONSTRAINT `fk_routine` FOREIGN KEY (`exercise_day_id`) REFERENCES `exercise_day`(`exercise_day_id`),
-  PRIMARY KEY(`routine_id`))
+  -- PRIMARY KEY(`routine_id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
@@ -40,12 +40,12 @@ SET FOREIGN_KEY_CHECKS=0;
 
 
 CREATE TABLE IF NOT EXISTS `workoutapp`.`exercise_day` (
-  `exercise_day_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `exercise_day_id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `exercise_day_name` VARCHAR(255) NULL DEFAULT NULL,
   `routine_id` INT(11) NOT NULL,
   --    KEY `fk_routine2` (`routine_id`),
-  CONSTRAINT `fk_routine2` FOREIGN KEY (`routine_id`) REFERENCES `routine`(`routine_id`),
-  PRIMARY KEY(`exercise_day_id`))
+  CONSTRAINT `fk_routine2` FOREIGN KEY (`routine_id`) REFERENCES `routine`(`routine_id`))
+  -- PRIMARY KEY(`exercise_day_id`))
 ENGINE=InnoDB
 AUTO_INCREMENT = 1;
 
@@ -114,7 +114,7 @@ INSERT INTO routine(routine_name) VALUES ('whenNOTLAZY');
 
 INSERT INTO exercise(exercise_name, starting_weight, inc_weight_by, set_1, set_2, set_3, set_4, reps_accomplished, exercise_day_id) VALUES ('benchpress', 90, 10, 0, 0, 0, 0, False, 1);
 
-INSERT INTO exercise_day (exercise_day_name, exercise_id, routine_id) VALUES ('pull1', 1, 1);
+INSERT INTO exercise_day (exercise_day_name, exercise_id, routine_id) VALUES ('pull1', 1, 2);
 
 
 
