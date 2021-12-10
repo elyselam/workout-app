@@ -10,12 +10,14 @@ import {ExerciseService} from "./services/exercise.service";
 import {RoutineService} from "./services/routine.service";
 import { AddRoutineComponent } from './components/add-routine/add-routine.component';
 import {FormsModule} from "@angular/forms";
+import { AddExerciseDayComponent } from './components/add-exercise-day/add-exercise-day.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutineListComponent,
-   AddRoutineComponent
+   AddRoutineComponent,
+   AddExerciseDayComponent
   ],
   imports: [
     BrowserModule,
