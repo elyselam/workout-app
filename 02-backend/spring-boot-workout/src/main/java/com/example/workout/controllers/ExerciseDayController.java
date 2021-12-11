@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "api/exerciseDay")
 public class ExerciseDayController {
@@ -23,6 +24,7 @@ public class ExerciseDayController {
 
     @PostMapping(consumes = "application/json")
     public HttpStatus createExerciseDay(@RequestBody ExerciseDay exerciseDay) {
+        System.out.println("ExerciseDay: " + exerciseDay.getExerciseDayName());
         return exerciseDayService.createExerciseDay(exerciseDay);
     }
 
@@ -41,4 +43,12 @@ public class ExerciseDayController {
         return exerciseDayService.getOneExerciseDay(exerciseDayId);
     }
 
+}
+class CreateExerciseDayRequest {
+    private String exerciseName;
+    private Integer routineId;
+    public CreateExerciseDayRequest(String exerciseName, Integer routineId) {
+        this.exerciseName = exerciseName;
+        this.routineId = routineId;
+    }
 }

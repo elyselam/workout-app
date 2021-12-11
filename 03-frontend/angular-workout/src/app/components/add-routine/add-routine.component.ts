@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RoutineService} from "../../services/routine.service";
 import {Routine} from "../../common/routine";
-import {readSpanComment} from "@angular/compiler-cli/src/ngtsc/typecheck/src/comments";
+
 
 @Component({
   selector: 'app-add-routine',
@@ -15,11 +15,10 @@ export class AddRoutineComponent implements OnInit {
   savedRoutines: Routine[]= [];
 
   constructor(private routineService: RoutineService) {
-
   }
 
   ngOnInit(): void {
-    return this.getRoutine();
+    this.getRoutine();
   }
 
   saveRoutines() {

@@ -24,6 +24,7 @@
 
 
 <div class="accordion" id="accordionExample" >
+
   <div class="accordion-item" *ngFor="let routine of savedRoutines; let i = index">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{i}}" aria-expanded="true" aria-controls="collapse{{i}}">
@@ -31,10 +32,16 @@
       </button>
     </h2>
     <div id="collapse{{i}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
+      <div class="accordion-body" >
+        <app-add-exercise-day>
+        </app-add-exercise-day>
+  <div *ngFor="let exDay of routine.exerciseDayList;">
+    {{exDay.exerciseDayName}}
+  </div>
       </div>
     </div>
   </div>
+
 </div>
 
 <div class="accordion" id="accordionExample">

@@ -19,6 +19,7 @@ public class ExerciseDayService {
         return exerciseDayRepository.findAll();
     }
     public HttpStatus createExerciseDay(ExerciseDay exerciseDay) {
+
         exerciseDayRepository.save(exerciseDay);
         return HttpStatus.ACCEPTED;
     }
