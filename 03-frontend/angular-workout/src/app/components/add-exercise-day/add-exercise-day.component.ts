@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ExerciseDay} from "../../common/exercise-day";
 import {ExerciseDayService} from "../../services/exercise-day-service";
+import {RoutineService} from "../../services/routine.service";
+import {Routine} from "../../common/routine";
+import {Exercise} from "../../common/exercise";
+
+
 
 @Component({
   selector: 'app-add-exercise-day',
   templateUrl: './add-exercise-day.component.html',
   styleUrls: ['./add-exercise-day.component.css']
 })
+
+
 export class AddExerciseDayComponent implements OnInit {
   exerciseDayId: number;
   exerciseDayName: string;
   savedExerciseDays: ExerciseDay[] = [];
-  routineId = 7;
-  constructor(private exerciseDayService: ExerciseDayService) { }
+  routineId : number;
+  @Input() routine : Routine;
+
+  constructor(private exerciseDayService: ExerciseDayService, private routineService: RoutineService) { }
 
   ngOnInit(): void {
-    this.getExerciseDays();
+
   }
-  saveExerciseDays() {
-    this.exerciseDayService.saveExerciseDay(new ExerciseDay(this.exerciseDayName, this.routineId)).then(resp=> {
-      this.savedExerciseDays.push(resp);
-    })
-  }
+
 
   getExerciseDays() {
     this.exerciseDayService.printExerciseDay().then(resp => {
@@ -29,7 +34,10 @@ export class AddExerciseDayComponent implements OnInit {
     })
   }
 
-  saveRoutines() {
-
+  saveToRoutine() {
+    const newExDay = new ExerciseDay();
+    newExDay.exerciseDayName = this.exerciseDayName;
+    this.routine.exerciseDayList.push(newExDay);
+    this.routineService.updateRoutine(this.routine).then(done => done);
   }
 }

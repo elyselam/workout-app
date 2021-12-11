@@ -6,10 +6,7 @@ export class ExerciseDay {
   exerciseList: Exercise[];
   routine: number;
 
-  constructor(exerciseDayName: string, routineId: number) {
-    this.exerciseDayName = exerciseDayName;
-    this.routine = routineId;
+  constructor() {
   }
-
 
 }

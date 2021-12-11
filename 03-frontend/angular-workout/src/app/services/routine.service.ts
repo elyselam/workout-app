@@ -28,7 +28,13 @@ export class RoutineService {
       return resp;
     });
 
+  }
 
+  updateRoutine(routine:Routine): Promise<Routine> {
+    console.log('updating')
+    return this.httpClient.put(this.baseUrl, routine).toPromise().then((resp: Routine) => {
+      return resp;}
+      )
   }
 }
 

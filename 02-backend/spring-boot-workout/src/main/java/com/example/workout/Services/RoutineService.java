@@ -25,7 +25,7 @@ public class RoutineService {
         Routine newRoutine = routineRepository.getById(routine.getRoutineId());
         newRoutine.setRoutineId(routine.getRoutineId());
         newRoutine.setRoutineName(routine.getRoutineName());
-        //newRoutine.setExerciseDayList(routine.getExerciseDayId());
+        newRoutine.setExerciseDayList(routine.getExerciseDayList());
         return routineRepository.save(newRoutine);
     }
 
