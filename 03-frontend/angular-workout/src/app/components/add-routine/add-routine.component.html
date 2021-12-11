@@ -33,7 +33,7 @@
     </h2>
     <div id="collapse{{i}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body" >
-        <app-add-exercise-day>
+        <app-add-exercise-day [routine]="routine">
         </app-add-exercise-day>
   <div *ngFor="let exDay of routine.exerciseDayList;">
     {{exDay.exerciseDayName}}

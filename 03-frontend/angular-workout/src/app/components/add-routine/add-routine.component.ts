@@ -32,7 +32,11 @@ export class AddRoutineComponent implements OnInit {
       })
     }
 
-
+  updateRoutine() {
+    this.routineService.updateRoutine(new Routine(this.routineName)).then(resp => {
+      this.savedRoutines.push(resp);
+    })
+  }
 
 
 }
