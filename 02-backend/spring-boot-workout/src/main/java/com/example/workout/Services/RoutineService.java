@@ -1,5 +1,7 @@
 package com.example.workout.Services;
 import com.example.workout.dao.RoutineRepository;
+import com.example.workout.entity.Exercise;
+import com.example.workout.entity.ExerciseDay;
 import com.example.workout.entity.Routine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
