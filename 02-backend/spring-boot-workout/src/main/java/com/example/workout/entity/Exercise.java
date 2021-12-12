@@ -31,6 +31,12 @@ public class Exercise {
     @Column(name = "inc_weight_by")
     private Integer incWeightBy;
 
+    @Column(name = "min_rep")
+    private Integer minRep;
+
+    @Column(name = "max_rep")
+    private Integer maxRep;
+
     @Column(name = "set_1")
     private Integer set1;
 

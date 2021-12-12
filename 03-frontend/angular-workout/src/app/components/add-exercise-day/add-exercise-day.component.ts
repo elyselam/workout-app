@@ -20,12 +20,19 @@ export class AddExerciseDayComponent implements OnInit {
   savedExerciseDays: ExerciseDay[] = [];
   routineId : number;
   @Input() routine : Routine;
+ exerciseList: Exercise[] = [new Exercise()];
 
-
-  exercise: string;
-  
-
-
+  exerciseId: number;
+  exerciseName: string;
+  startingWeight: number;
+  incWeightBy: number;
+  minRep: number;
+  maxRep: number;
+  set1: number;
+  set2: number;
+  set3: number;
+  set4: number;
+  repsAccomplished: boolean;
 
   constructor(private exerciseDayService: ExerciseDayService, private routineService: RoutineService) { }
 
@@ -43,6 +50,7 @@ export class AddExerciseDayComponent implements OnInit {
   saveToRoutine() {
     const newExDay = new ExerciseDay();
     newExDay.exerciseDayName = this.exerciseDayName;
+
     this.routine.exerciseDayList.push(newExDay);
     this.routineService.updateRoutine(this.routine).then(done => done);
   }
