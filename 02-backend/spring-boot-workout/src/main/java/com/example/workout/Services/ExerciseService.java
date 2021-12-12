@@ -23,6 +23,7 @@ public class ExerciseService {
         return HttpStatus.ACCEPTED;
     }
 
+
     public HttpStatus updateExercise(Exercise exercise, Integer exerciseId) {
         Exercise exercise1 = exerciseRepository.getById(exerciseId);
 //        exercise1.setExerciseID(exercise.getExerciseID());
