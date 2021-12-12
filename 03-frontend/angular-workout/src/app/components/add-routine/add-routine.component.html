@@ -52,6 +52,7 @@
                 <table class="table">
                   <thead>
                   <tr>
+                    <th scope="col">exerciseName</th>
                     <th scope="col">startingWeight</th>
                     <th scope="col">incWeightBy</th>
                     <th scope="col">minRep</th>
@@ -60,12 +61,17 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td> <input type="text"> </td>
-                    <td> <input type="text"> </td>
-                    <td> <input type="text"> </td>
-                    <td> <input type="text"> </td>
+                    <td> <input type="text" [(ngModel)]="exercise.exerciseName" > </td>
+                    <td> <input type="text" [(ngModel)]="exercise.startingWeight" > </td>
+                    <td> <input type="text" [(ngModel)]="exercise.incWeightBy"> </td>
+                    <td> <input type="text" [(ngModel)]="exercise.minRep"> </td>
+                    <td> <input type="text" [(ngModel)]="exercise.maxRep" > </td>
                   </tbody>
-                  <button>Save</button> <button>Add More</button> <button>Done</button>
+                  <button (click)="updateRoutine(routine, exDay, exercise)"> Save</button>
+
+                  <button>Add More</button>
+
+                  <button>Done</button>
                 </table>
 
 

@@ -1,4 +1,5 @@
 export class Exercise {
+
   exerciseId: number;
   exerciseName: string;
   startingWeight: number;

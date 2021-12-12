@@ -56,11 +56,11 @@ public class Exercise {
     }
 
 
-    public Integer getExerciseID() {
+    public Integer getExerciseId() {
         return exerciseId;
     }
 
-    public void setExerciseID(Integer exerciseID) {
+    public void setExerciseId(Integer exerciseID) {
         this.exerciseId = exerciseID;
     }
 
@@ -130,6 +130,22 @@ public class Exercise {
 
     public boolean isRepsAccomplished() {
         return repsAccomplished;
+    }
+
+    public Integer getMinRep() {
+        return minRep;
+    }
+
+    public void setMinRep(Integer minRep) {
+        this.minRep = minRep;
+    }
+
+    public Integer getMaxRep() {
+        return maxRep;
+    }
+
+    public void setMaxRep(Integer maxRep) {
+        this.maxRep = maxRep;
     }
 
     public void setRepsAccomplished(boolean repsAccomplished) {
