@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RoutineService} from "../../services/routine.service";
 import {Routine} from "../../common/routine";
 
@@ -12,7 +12,7 @@ export class AddRoutineComponent implements OnInit {
 
   routineId: number;
   routineName: string;
-  savedRoutines: Routine[]= [];
+  savedRoutines: Routine[] = [];
 
   constructor(private routineService: RoutineService) {
   }
@@ -24,13 +24,14 @@ export class AddRoutineComponent implements OnInit {
   saveRoutines() {
     this.routineService.saveRoutine(new Routine(this.routineName)).then(resp => {
       this.savedRoutines.push(resp);
-    })}
+    })
+  }
 
-  getRoutine(){
-      this.routineService.printRoutine().then(resp => {
-        this.savedRoutines = resp;
-      })
-    }
+  getRoutine() {
+    this.routineService.printRoutine().then(resp => {
+      this.savedRoutines = resp;
+    })
+  }
 
   updateRoutine() {
     this.routineService.updateRoutine(new Routine(this.routineName)).then(resp => {
