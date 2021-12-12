@@ -21,6 +21,12 @@ export class AddExerciseDayComponent implements OnInit {
   routineId : number;
   @Input() routine : Routine;
 
+
+  exercise: string;
+  
+
+
+
   constructor(private exerciseDayService: ExerciseDayService, private routineService: RoutineService) { }
 
   ngOnInit(): void {
@@ -40,4 +46,11 @@ export class AddExerciseDayComponent implements OnInit {
     this.routine.exerciseDayList.push(newExDay);
     this.routineService.updateRoutine(this.routine).then(done => done);
   }
+
+
+
+
+
+
+
 }
