@@ -1,3 +1,34 @@
 .accordion-exerciseDay-button {
   background-color: aqua;
 }
+
+
+input {
+  width: 120px;
+  height: 20px;
+  border: 1px;
+  padding: 5px;
+  outline: none;
+}
+
+input:focus {
+  box-shadow:  0 0 0 1px orange;
+}
+
+table {
+  margin: 50px;
+  font-weight: 400;
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 20px;
+}
+
+td,
+th {
+  font-weight: 900;
+  width: 120px;
+  border: 1px solid #dddddd;
+  padding: 0;
+}

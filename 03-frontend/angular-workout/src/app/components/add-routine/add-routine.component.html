@@ -41,13 +41,35 @@
               <button aria-controls="collapse{{exDay.exerciseDayId}}" aria-expanded="true" class="accordion-exerciseDay-button" data-bs-target="#collapseOne"
                      data-bs-toggle="collapse" type="button">
 
-                {{exDay.exerciseDayName}}  </button>
+                {{exDay.exerciseDayName}}</button>
             </h2>
             <div aria-labelledby="headingOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample"
                  id="collapseOne">
               <div class="accordion-body">
-                <strong>This is the first item's accordion body
-                </strong>
+                <div *ngFor="let exercise of exDay.exerciseList; let i = index">
+
+
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">startingWeight</th>
+                    <th scope="col">incWeightBy</th>
+                    <th scope="col">minRep</th>
+                    <th scope="col">maxRep</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td> <input type="text"> </td>
+                    <td> <input type="text"> </td>
+                    <td> <input type="text"> </td>
+                    <td> <input type="text"> </td>
+                  </tbody>
+                  <button>Save</button> <button>Add More</button> <button>Done</button>
+                </table>
+
+
+                </div>
               </div>
             </div>
           </div>
