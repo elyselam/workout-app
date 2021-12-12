@@ -51,6 +51,9 @@ export class AddExerciseDayComponent implements OnInit {
     const newExDay = new ExerciseDay();
     newExDay.exerciseDayName = this.exerciseDayName;
 
+
+
+
     this.routine.exerciseDayList.push(newExDay);
     this.routineService.updateRoutine(this.routine).then(done => done);
   }
