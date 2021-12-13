@@ -64,8 +64,12 @@ export class AddRoutineComponent implements OnInit {
     this.routineService.updateRoutine(routine).then(response => response);
    //
   }
-  addMoreExercises(exercise: Exercise, routine: Routine, exerciseDay: ExerciseDay) {
+  addMoreExercises(exerciseDay: ExerciseDay) {
     // this hsould add a new row or a new table beneath the existing exercises
+    exerciseDay.exerciseList.push(new Exercise());
+  }
 
+  deleteExerciseInput(exerciseDay: ExerciseDay) {
+    exerciseDay.exerciseList.pop();
   }
 }
