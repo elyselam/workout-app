@@ -36,5 +36,11 @@ export class RoutineService {
       return resp;}
       )
   }
+
+  deleteRoutine(routine:Routine): Promise<Routine> {
+    return this.httpClient.delete(this.baseUrl).toPromise().then((resp: Routine) => {
+      return resp;
+    })
+  }
 }
 
