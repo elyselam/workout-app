@@ -37,6 +37,11 @@ public class ExerciseDayService {
         return HttpStatus.ACCEPTED;
     }
 
+    public HttpStatus deleteExerciseDays(){
+        exerciseDayRepository.deleteAll();
+        return HttpStatus.ACCEPTED;
+    }
+
     public ExerciseDay getOneExerciseDay(Integer exerciseDayId){
         return exerciseDayRepository.getById(exerciseDayId);
 
