@@ -2,92 +2,82 @@
   <div class="card-body">
     <h5 class="card-title">Input Routine</h5>
     <input [(ngModel)]="routineName">
-
-
     <a (click)=saveRoutines() class="btn btn-primary" href="#">Save</a>
   </div>
 </div>
-
-
 <!--<div class="card" *ngFor="let routine of savedRoutines">-->
 <!--  <div class="card-body">-->
 <!--    <h5 class="card-title"> id: {{ routine.routineId}} routine: {{ routine.routineName}} (click)=editRoutine() </h5>-->
-
 <!--  </div>-->
 <!--</div>-->
 
-
+<!--input Routine first, the outermost accordion -->
 <div class="accordion" id="accordionExample">
 
-  <div *ngFor="let routine of savedRoutines; let i = index" class="accordion-item">
+<!-- this displays routine name, only 1 input allowed. -->
 
-    <h2 class="accordion-header" id="headingOne">
-      <button aria-controls="collapse{{i}}" aria-expanded="true" class="accordion-button" [attr.data-bs-target]="'#collapse' + i" data-bs-toggle="collapse" type="button">
-        id: {{i}} {{ routine.routineId}} routine: {{ routine.routineName}}
+  <div *ngFor="let routine of savedRoutines; let i = index" class="accordion-item">
+    <h2 class="accordion-header" id="collapse-routine-header">
+      <button aria-controls="collapse{{i}}" aria-expanded="true" class="accordion-button" [attr.data-bs-target]="'#collapse-routine' + i" data-bs-toggle="collapse" type="button">
+        id:{{i}} {{ routine.routineId}} routine: {{ routine.routineName}}
       </button>
     </h2>
 
-
-    <div aria-labelledby="headingOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample"
-         id="collapse{{i}}">
+<!--    should display according for first exerciseDay-->
+    <div aria-labelledby="headingOne" class="accordion-collapse collapse show"
+         id="collapse-routine{{i}}">
       <div class="accordion-body">
         <app-add-exercise-day [routine]="routine">
         </app-add-exercise-day>
-        <div *ngFor="let exDay of routine.exerciseDayList;">
-
-
+        <div *ngFor="let exDay of routine.exerciseDayList; let dayIndex = index">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button aria-controls="collapse{{exDay.exerciseDayId}}" aria-expanded="true" class="accordion-exerciseDay-button" data-bs-target="#collapseOne"
-                     data-bs-toggle="collapse" type="button">
 
+            <h2 class="accordion-header" id="headingOne">
+              <button aria-controls="collapse{{exDay.exerciseDayId}}" aria-expanded="true" class="accordion-button" [attr.data-bs-target]="'#collapse-exercise' + dayIndex"
+                      data-bs-toggle="collapse" type="button">
                 {{exDay.exerciseDayName}}</button>
             </h2>
-            <div aria-labelledby="headingOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample"
-                 id="collapseOne">
+
+
+            <div aria-labelledby="headingOne" class="accordion-collapse collapse" [id]="'collapse-exercise' + dayIndex">
+
+
               <div class="accordion-body">
-                <div *ngFor="let exercise of exDay.exerciseList; let i = index">
+                <div>
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">Buttons</th>
+                      <th scope="col">exerciseName</th>
+                      <th scope="col">startingWeight</th>
+                      <th scope="col">incWeightBy</th>
+                      <th scope="col">minRep</th>
+                      <th scope="col">maxRep</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  *ngFor="let exercise of exDay.exerciseList; let i = index">
+                      <td>
+                        <button class="btn-btn-primary" (click)="updateRoutine(routine, exDay, exercise)"> Save</button>
+                        <!-- below button just adds a dummy exercise to exDay.exerciseList so that the table will have a new row -->
+                        <button class="btn-btn-warning" (click)="deleteExerciseInput(exDay)">Delete</button>
 
-
-                <table class="table">
-                  <thead>
-                  <tr>
-                    <th scope="col">exerciseName</th>
-                    <th scope="col">startingWeight</th>
-                    <th scope="col">incWeightBy</th>
-                    <th scope="col">minRep</th>
-                    <th scope="col">maxRep</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td> <input type="text" [(ngModel)]="exercise.exerciseName" > </td>
-                    <td> <input type="text" [(ngModel)]="exercise.startingWeight" > </td>
-                    <td> <input type="text" [(ngModel)]="exercise.incWeightBy"> </td>
-                    <td> <input type="text" [(ngModel)]="exercise.minRep"> </td>
-                    <td> <input type="text" [(ngModel)]="exercise.maxRep" > </td>
-                  </tr>
-                  </tbody>
-                  <button (click)="updateRoutine(routine, exDay, exercise)"> Save</button>
-
-<!-- below button just adds a dummy exercise to exDay.exerciseList so that the table will have a new row -->
-                  <button (click)="addMoreExercises(exDay)" >Add More</button>
-
-                  <button (click)="deleteExerciseInput(exDay)">Delete</button>
-                </table>
-
-
+                      </td>
+                      <td> <input type="text" [(ngModel)]="exercise.exerciseName" > </td>
+                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.startingWeight" > </td>
+                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.incWeightBy"> </td>
+                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.minRep"> </td>
+                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.maxRep" > </td>
+                    </tr>
+                    </tbody>
+                    <button (click)="addMoreExercises(exDay)" >Add More</button>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
-
-
-
         </div>
       </div>
     </div>
   </div>
-
 </div>
-

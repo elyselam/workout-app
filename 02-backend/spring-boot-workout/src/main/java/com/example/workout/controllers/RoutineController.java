@@ -35,6 +35,13 @@ public class RoutineController {
         return routineService.deleteRoutineById(routine);
     }
 
+    @DeleteMapping
+    private HttpStatus deleteRoutines(Routine routine) {
+        return routineService.deleteRoutines();
+    }
+
+
+
     @GetMapping(path="/{routineId}")
     private Routine getOneRoutine(@PathVariable("routineId") Integer routineId) {
         return routineService.getOneRoutine(routineId);

@@ -44,6 +44,11 @@ public class ExerciseService {
         return HttpStatus.ACCEPTED;
     }
 
+    public HttpStatus deleteExercises() {
+        exerciseRepository.deleteAll();
+        return HttpStatus.ACCEPTED;
+    }
+
     public Exercise getOneExercise(Integer exerciseId){
         return exerciseRepository.getById(exerciseId);
 

@@ -35,6 +35,12 @@ public class RoutineService {
         routineRepository.deleteById(routineId);
         return HttpStatus.ACCEPTED;
     }
+
+    public HttpStatus deleteRoutines() {
+        routineRepository.deleteAll();
+        return HttpStatus.ACCEPTED;
+    }
+
     public Routine getOneRoutine(Integer routineId) {
         return routineRepository.getById(routineId);
     }
