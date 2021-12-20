@@ -41,7 +41,7 @@
                       data-bs-toggle="collapse" type="button">
                 {{exDay.exerciseDayName}}</button>
 
-              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#startWorkout" aria-expanded="false" aria-controls="startWorkout">Start the workout</button>
+              <button (click)="showStartWorkoutView = !showStartWorkoutView" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#startWorkout" aria-expanded="false" aria-controls="startWorkout">Start the workout</button>
             </h2>
 
             <div aria-labelledby="headingOne" class="accordion-collapse collapse" [id]="'collapse-exercise' + dayIndex">
@@ -49,8 +49,9 @@
                 <div>
 
 
-<app-edit-exercises [routine]="routine"> </app-edit-exercises>
-<app-start-workout [routine]="routine"> </app-start-workout>
+<app-edit-exercises [routine]="routine" *ngIf="!showStartWorkoutView"> </app-edit-exercises>
+
+<app-start-workout [routine]="routine" *ngIf="showStartWorkoutView"> </app-start-workout>
 
 
 
