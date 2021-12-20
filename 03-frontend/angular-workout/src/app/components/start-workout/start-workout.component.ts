@@ -17,6 +17,7 @@ export class StartWorkoutComponent implements OnInit {
   constructor(private exerciseDayService: ExerciseDayService, private routineService: RoutineService) { }
 
   ngOnInit(): void {
+    console.log('routine: ', this.routine)
   }
 
   //

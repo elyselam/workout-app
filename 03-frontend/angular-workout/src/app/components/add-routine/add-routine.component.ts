@@ -11,6 +11,7 @@ import {Exercise} from "../../common/exercise";
   styleUrls: ['./add-routine.component.css']
 })
 export class AddRoutineComponent implements OnInit {
+  showStartWorkoutView = false;
 
   routineId: number;
   routineName: string;

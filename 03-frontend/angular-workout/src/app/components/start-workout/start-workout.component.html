@@ -1,8 +1,21 @@
+<div *ngFor="let exDay of routine.exerciseDayList; let dayIndex = index">
+  <div class="accordion-item">
+
+    <h2 class="accordion-header" id="headingOne">
+
+      <button aria-controls="collapse{{exDay.exerciseDayId}}" aria-expanded="true" class="accordion-button" [attr.data-bs-target]="'#collapse-exercise' + dayIndex"
+              data-bs-toggle="collapse" type="button">
+        {{exDay.exerciseDayName}}</button>
+    </h2>
+  </div>
+
+
 <table class="table">
   <thead>
   <tr>
     <th scope="col">Exercise Name</th>
     <th scope="col">Starting Weight</th>
+    <th scope="col">Increase Weight By</th>
     <th scope="col">Set 1 </th>
     <th scope="col">Set 2 </th>
     <th scope="col">Set 3 </th>
@@ -11,20 +24,22 @@
   </tr>
   </thead>
   <tbody>
-<!--  <tr  *ngFor="let exercise of exDay.exerciseList; let i = index">-->
-<!--    <td>-->
-<!--      <button class="btn-btn-primary" (click)="updateRoutine(routine, exDay, exercise)"> Save</button>-->
-<!--      &lt;!&ndash; below button just adds a dummy exercise to exDay.exerciseList so that the table will have a new row &ndash;&gt;-->
-<!--      <button class="btn-btn-warning" (click)="deleteExerciseInput(exDay)">Delete</button>-->
 
-<tr *ngFor="let exercise of exerciseDay.exerciseList; let i = index">
+<tr *ngFor="let exercise of exDay.exerciseList; let i = index">
     <td> {{exercise.exerciseName}} </td>
-    <td>  </td>
-    <td> </td>
-    <td>  </td>
-    <td >  </td>
+    <td> {{exercise.startingWeight}}</td>
+    <td> {{exercise.incWeightBy}} </td>
+    <td> {{exercise.set1}} </td>
+    <td> {{exercise.set2}} </td>
+    <td> {{exercise.set3}} </td>
+    <td> {{exercise.set4}} </td>
+    <td>
+      <button class="btn-btn-secondary" (click)="nailedIt()">Yes</button>
+      <button class="btn-btn-secondary" (click)="failedIt()">Nope</button>
+    </td>
   </tr>
   </tbody>
 
 </table>
 
+</div>
