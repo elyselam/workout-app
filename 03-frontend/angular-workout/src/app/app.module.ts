@@ -11,13 +11,17 @@ import {RoutineService} from "./services/routine.service";
 import { AddRoutineComponent } from './components/add-routine/add-routine.component';
 import {FormsModule} from "@angular/forms";
 import { AddExerciseDayComponent } from './components/add-exercise-day/add-exercise-day.component';
+import { EditExercisesComponent } from './components/edit-exercises/edit-exercises.component';
+import { StartWorkoutComponent } from './components/start-workout/start-workout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoutineListComponent,
    AddRoutineComponent,
-   AddExerciseDayComponent
+   AddExerciseDayComponent,
+   EditExercisesComponent,
+   StartWorkoutComponent
   ],
   imports: [
     BrowserModule,
