@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Exercise Name</th>
+    <th scope="col">Starting Weight</th>
+    <th scope="col">Set 1 </th>
+    <th scope="col">Set 2 </th>
+    <th scope="col">Set 3 </th>
+    <th scope="col">Set 4 </th>
+    <th scope="col">Accomplished? </th>
+  </tr>
+  </thead>
+  <tbody>
+<!--  <tr  *ngFor="let exercise of exDay.exerciseList; let i = index">-->
+<!--    <td>-->
+<!--      <button class="btn-btn-primary" (click)="updateRoutine(routine, exDay, exercise)"> Save</button>-->
+<!--      &lt;!&ndash; below button just adds a dummy exercise to exDay.exerciseList so that the table will have a new row &ndash;&gt;-->
+<!--      <button class="btn-btn-warning" (click)="deleteExerciseInput(exDay)">Delete</button>-->
+
+<tr *ngFor="let exercise of exerciseDay.exerciseList; let i = index">
+    <td> {{exercise.exerciseName}} </td>
+    <td>  </td>
+    <td> </td>
+    <td>  </td>
+    <td >  </td>
+  </tr>
+  </tbody>
+
+</table>
+

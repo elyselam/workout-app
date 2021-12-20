@@ -23,58 +23,39 @@
       </button>
     </h2>
 
-<!--    should display according for first exerciseDay-->
+<!--    should display accordion for first exerciseDay-->
     <div aria-labelledby="headingOne" class="accordion-collapse collapse show"
          id="collapse-routine{{i}}">
       <div class="accordion-body">
         <app-add-exercise-day [routine]="routine">
         </app-add-exercise-day>
+
+
         <div *ngFor="let exDay of routine.exerciseDayList; let dayIndex = index">
           <div class="accordion-item">
 
             <h2 class="accordion-header" id="headingOne">
+
+<!--needs to add toggle "Start Workout" -->
               <button aria-controls="collapse{{exDay.exerciseDayId}}" aria-expanded="true" class="accordion-button" [attr.data-bs-target]="'#collapse-exercise' + dayIndex"
                       data-bs-toggle="collapse" type="button">
                 {{exDay.exerciseDayName}}</button>
+
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#startWorkout" aria-expanded="false" aria-controls="startWorkout">Start the workout</button>
             </h2>
 
-
             <div aria-labelledby="headingOne" class="accordion-collapse collapse" [id]="'collapse-exercise' + dayIndex">
-
-
               <div class="accordion-body">
                 <div>
-                  <table class="table">
-                    <thead>
-                    <tr>
-                      <th scope="col">Buttons</th>
-                      <th scope="col">exerciseName</th>
-                      <th scope="col">startingWeight</th>
-                      <th scope="col">incWeightBy</th>
-                      <th scope="col">minRep</th>
-                      <th scope="col">maxRep</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr  *ngFor="let exercise of exDay.exerciseList; let i = index">
-                      <td>
-                        <button class="btn-btn-primary" (click)="updateRoutine(routine, exDay, exercise)"> Save</button>
-                        <!-- below button just adds a dummy exercise to exDay.exerciseList so that the table will have a new row -->
-                        <button class="btn-btn-warning" (click)="deleteExerciseInput(exDay)">Delete</button>
 
-                      </td>
-                      <td> <input type="text" [(ngModel)]="exercise.exerciseName" > </td>
-                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.startingWeight" > </td>
-                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.incWeightBy"> </td>
-                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.minRep"> </td>
-                      <td> <input type="number" pattern="\d*" [(ngModel)]="exercise.maxRep" > </td>
-                    </tr>
-                    </tbody>
-                    <button (click)="addMoreExercises(exDay)" >Add More</button>
-                  </table>
-                </div>
-              </div>
-            </div>
+
+<app-edit-exercises [routine]="routine"> </app-edit-exercises>
+<app-start-workout [routine]="routine"> </app-start-workout>
+
+
+
+
+
           </div>
         </div>
       </div>
