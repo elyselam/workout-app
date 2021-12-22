@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 
 import {Routine} from "../common/routine";
+import {Exercise} from "../common/exercise";
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,33 @@ export class RoutineService {
     return this.httpClient.delete(this.baseUrl).toPromise().then((resp: Routine) => {
       return resp;
     })
+  }
+
+
+  nailedIt(exercise: Exercise, routine: Routine): void {
+
+    exercise.set1 = exercise.maxRep;
+
+    if (exercise.set2 < exercise.maxRep) {
+      exercise.set2 += 1;
+
+    } else if (exercise.set3 < exercise.maxRep) {
+      exercise.set3 += 1;
+
+    } else if (exercise.set4 < exercise.maxRep) {
+        exercise.set4 += 1;
+
+    } else if (exercise.set4 === exercise.maxRep) {
+      exercise.startingWeight = exercise.startingWeight + exercise.incWeightBy;
+
+
+    }
+    this.updateRoutine(routine);
+    // exercise.set1 = exercise.maxRep;
+    // exercise.set2 = exercise.maxRep - 1;
+    // exercise.set2 = exercise.maxRep - 2;
+    // exercise.set2 = exercise.maxRep - 3;
+
   }
 }
 
