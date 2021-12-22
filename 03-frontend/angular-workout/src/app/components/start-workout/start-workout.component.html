@@ -20,7 +20,7 @@
     <th scope="col">Set 2 </th>
     <th scope="col">Set 3 </th>
     <th scope="col">Set 4 </th>
-    <th scope="col">Accomplished? </th>
+    <th scope="col">Nailed It?</th>
   </tr>
   </thead>
   <tbody>
@@ -29,13 +29,13 @@
     <td> {{exercise.exerciseName}} </td>
     <td> {{exercise.startingWeight}}</td>
     <td> {{exercise.incWeightBy}} </td>
-    <td> {{exercise.set1}} </td>
+    <td> {{exercise.maxRep}} </td>
     <td> {{exercise.set2}} </td>
     <td> {{exercise.set3}} </td>
     <td> {{exercise.set4}} </td>
     <td>
-      <button class="btn-btn-secondary" (click)="nailedIt()">Yes</button>
-      <button class="btn-btn-secondary" (click)="failedIt()">Nope</button>
+      <button class="btn-btn-secondary" (click)="routineService.nailedIt(exercise, routine)">Yes</button>
+
     </td>
   </tr>
   </tbody>
