@@ -60,15 +60,12 @@ export class RoutineService {
 
     } else if (exercise.set4 === exercise.maxRep) {
       exercise.startingWeight = exercise.startingWeight + exercise.incWeightBy;
-
-
+      exercise.set1 = exercise.maxRep;
+      exercise.set2 = exercise.maxRep - 1;
+      exercise.set3 = exercise.maxRep - 2;
+      exercise.set4 = exercise.maxRep - 3;
+      this.updateRoutine(routine);
     }
-    this.updateRoutine(routine);
-    // exercise.set1 = exercise.maxRep;
-    // exercise.set2 = exercise.maxRep - 1;
-    // exercise.set2 = exercise.maxRep - 2;
-    // exercise.set2 = exercise.maxRep - 3;
-
   }
 }
 
